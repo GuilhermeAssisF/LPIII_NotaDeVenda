@@ -1,6 +1,8 @@
 package entities;
 
-public class Venda extends Product{
+import java.io.Serializable;
+
+public class Venda extends Product {
     private int quantidade;
 
     public Venda(String name, double price, int quantidade) {

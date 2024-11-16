@@ -1,7 +1,7 @@
 package application;
 
-import entities.Product;
 import entities.Venda;
+import services.PaymentCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +29,25 @@ public class Program {
             products.add(p);
         }
 
-        int totalBuy = 0;
+        Double totalBuy = 0.0;
 
         for (Venda p : products) {
-            System.out.println(p);
             totalBuy += p.totalPrice();
         }
 
-        System.out.println("Total buy: " + totalBuy);
+        System.out.println("Enter payment method" +
+                "\n C - Credit" +
+                "\n D - Debit" +
+                "\n M - Money");
 
+        PaymentCalculator pc = new PaymentCalculator();
+        pc.Calculator(totalBuy, pc);
+
+        for (Venda p : products) {
+            System.out.println(p);
+        }
+        System.out.println("Total value: " + totalBuy);
+        System.out.println("Total Payment: " + pc.getTotalPayment());
+        sc.close();
     }
 }
